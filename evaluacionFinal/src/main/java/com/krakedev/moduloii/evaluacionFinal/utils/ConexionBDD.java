@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 import com.krakedev.moduloii.evaluacionFinal.excepciones.InventarioException;
 
 
+
 public class ConexionBDD {
 	public static Connection obtenerConexion() throws InventarioException {
 		Context ctx = null;
