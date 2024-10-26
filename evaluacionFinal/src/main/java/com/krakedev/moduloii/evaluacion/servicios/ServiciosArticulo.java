@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import com.krakedev.moduloii.evaluacionFinal.entidades.Articulo;
+import com.krakedev.moduloii.evaluacionFinal.entidades.Grupo;
 import com.krakedev.moduloii.evaluacionFinal.excepciones.InventarioException;
 import com.krakedev.moduloii.evaluacionFinal.utils.ConexionBDD;
 
@@ -20,6 +21,31 @@ public class ServiciosArticulo {
 			ps.setBigDecimal(3, articulo.getPrecio_venta());
 			ps.setBigDecimal(4, articulo.getPrecio_compra());
 			ps.setObject(5, articulo.getId_grupos());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new InventarioException("Error al insertar el cliente. DETALLE: "+e.getMessage());
+		} catch (InventarioException e) {
+			e.printStackTrace();
+			throw e;
+		}finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	public void insertarGrupo(Grupo grupo) throws InventarioException {
+		Connection con=null;
+		try {
+			con=ConexionBDD.obtenerConexion();
+			PreparedStatement ps= con.prepareStatement("insert into categorias"
+					+ "values(?,?)");
+			ps.setString(1,grupo.getId());
+			ps.setString(2, grupo.getNombre());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
