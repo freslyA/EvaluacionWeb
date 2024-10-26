@@ -14,17 +14,7 @@ public class Articulos {
 		return "Hola mundo de rest webs services";
 	}
 	
-	@Path("eliminar/{id}")
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response eliminar(@PathParam("id") int id){
-		
-	}
-	
-	
-	
-	
-	
+
 	
 	
 }
