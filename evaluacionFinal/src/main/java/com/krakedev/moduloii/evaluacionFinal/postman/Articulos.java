@@ -5,7 +5,7 @@ import javax.ws.rs.Path;
 
 @Path("funciones")
 public class Articulos {
-	
+
 	@Path("m1")
 	@GET
 	public String saludar() {
