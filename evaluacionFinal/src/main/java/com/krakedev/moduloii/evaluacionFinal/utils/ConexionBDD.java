@@ -9,6 +9,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 
+
 public class ConexionBDD {
 	public static Connection obtenerConexion() {
 		Context ctx = null;
